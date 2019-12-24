@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -38,14 +40,35 @@ namespace CleoSystem.EchoWebService.WebApp
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.MapWhen(Predicate, AppConfiguration);
+        }
 
-            app.UseAuthorization();
+        private void AppConfiguration(IApplicationBuilder applicationBuilder)
+        {
+            applicationBuilder.Run(Handler);
+        }
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+        private async Task Handler(HttpContext context)
+        {
+            var requestBodyStream = new MemoryStream();
+
+            await context.Request.Body.CopyToAsync(requestBodyStream);
+            requestBodyStream.Seek(0, SeekOrigin.Begin);
+
+            var requestBodyText = new StreamReader(requestBodyStream).ReadToEnd();
+
+            var response = context.Response;
+
+            await response.WriteAsync(requestBodyText)
+                .ConfigureAwait(false);
+
+            response.StatusCode = 501;
+            response.ContentType = "text/plain";
+        }
+
+        private static bool Predicate(HttpContext arg)
+        {
+            return true;
         }
     }
 }
