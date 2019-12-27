@@ -71,7 +71,7 @@ namespace CleoSystem.EchoWebService.WebApp
             var requestBodyStream = new MemoryStream();
 
             var response = context.Response;
-            response.StatusCode = 501;
+            response.StatusCode = 200;
             response.ContentType = "text/plain";
 
             var request = context.Request;
