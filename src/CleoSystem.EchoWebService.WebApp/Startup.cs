@@ -15,22 +15,39 @@ using Microsoft.Extensions.Logging;
 
 namespace CleoSystem.EchoWebService.WebApp
 {
+    /// <summary>
+    /// Web host startup logic
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
+        /// </summary>
+        /// <param name="configuration">Application configuration.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Gets the application configuration.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Configures services.
+        /// </summary>
+        /// <param name="services">Services collection to modify.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Configures the application.
+        /// </summary>
+        /// <param name="app">Application builder.</param>
+        /// <param name="env">web hosting environment details.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
