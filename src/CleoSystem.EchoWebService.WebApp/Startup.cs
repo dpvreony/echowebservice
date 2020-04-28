@@ -1,3 +1,7 @@
+// Copyright (c) 2019 DHGMS Solutions and Contributors. All rights reserved.
+// This file is licensed to you under the MIT license.
+// See the LICENSE file in the project root for full license information.
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,7 +43,9 @@ namespace CleoSystem.EchoWebService.WebApp
         /// Configures services.
         /// </summary>
         /// <param name="services">Services collection to modify.</param>
+#pragma warning disable CA1822 // Mark members as static
         public void ConfigureServices(IServiceCollection services)
+#pragma warning restore CA1822 // Mark members as static
         {
             services.AddControllers();
         }
@@ -89,12 +95,13 @@ namespace CleoSystem.EchoWebService.WebApp
             await context.Request.Body.CopyToAsync(requestBodyStream);
             requestBodyStream.Seek(0, SeekOrigin.Begin);
 
-            var requestBodyText = new StreamReader(requestBodyStream).ReadToEnd();
+            using (var streamReader = new StreamReader(requestBodyStream))
+            {
+                var requestBodyText = streamReader.ReadToEnd();
 
-
-            await response.WriteAsync(requestBodyText)
-                .ConfigureAwait(false);
-
+                await response.WriteAsync(requestBodyText)
+                    .ConfigureAwait(false);
+            }
         }
 
         private static bool Predicate(HttpContext arg)
