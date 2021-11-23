@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleoSystem.EchoWebService.WebApp\CleoSystem.EchoWebService.WebApp.csproj" />
+    <ProjectReference Include="..\EchoWebService.WebApp\EchoWebService.WebApp.csproj" />
   </ItemGroup>
 
 </Project>

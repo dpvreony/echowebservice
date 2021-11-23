@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleoSystems.EchoWebService.UnitTests", "CleoSystems.EchoWebService.UnitTests\CleoSystems.EchoWebService.UnitTests.csproj", "{29D7728E-1FEB-4594-AAA7-80B80A2DCC4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoWebService.UnitTests", "EchoWebService.UnitTests\EchoWebService.UnitTests.csproj", "{29D7728E-1FEB-4594-AAA7-80B80A2DCC4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleoSystems.EchoWebService.IntegrationTests", "CleoSystems.EchoWebService.IntegrationTests\CleoSystems.EchoWebService.IntegrationTests.csproj", "{F191CBF0-B38E-4AAF-9342-AA2177EFCB29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoWebService.IntegrationTests", "EchoWebService.IntegrationTests\EchoWebService.IntegrationTests.csproj", "{F191CBF0-B38E-4AAF-9342-AA2177EFCB29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleoSystem.EchoWebService.WebApp", "CleoSystem.EchoWebService.WebApp\CleoSystem.EchoWebService.WebApp.csproj", "{A64E91BC-B41B-42E3-8E27-6F19E2C9B48F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoWebService.WebApp", "EchoWebService.WebApp\EchoWebService.WebApp.csproj", "{A64E91BC-B41B-42E3-8E27-6F19E2C9B48F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
