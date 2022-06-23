@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using CleoSystem.EchoWebService.WebApp;
+using EchoWebService.WebApp;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CleoSystems.EchoWebService.IntegrationTests
+namespace EchoWebService.IntegrationTests
 {
     /// <summary>
     /// Integration tests for the web application.
