@@ -38,14 +38,14 @@ namespace EchoWebService.IntegrationTests
         {
             var client = _factory.CreateClient();
             var requestUri = new Uri("/");
-            var response = await client.GetAsync(requestUri).ConfigureAwait(false);
+            var response = await client.GetAsync(requestUri);
 
             response.EnsureSuccessStatusCode();
             Assert.Equal(
                 "text/text; charset=utf-8",
                 response.Content.Headers.ContentType.ToString());
 
-            await LogResponseAsync(response).ConfigureAwait(false);
+            await LogResponseAsync(response);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace EchoWebService.IntegrationTests
                 _logger.LogInformation($"{key}: {string.Join(",", value)}");
             }
 
-            var result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = await response.Content.ReadAsStringAsync();
             _logger.LogInformation(result);
         }
     }
