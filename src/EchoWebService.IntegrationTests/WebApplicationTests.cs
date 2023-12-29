@@ -12,7 +12,7 @@ namespace EchoWebService.IntegrationTests
     /// <summary>
     /// Integration tests for the web application.
     /// </summary>
-    public sealed class WebApplicationTests : Foundatio.Logging.Xunit.TestWithLoggingBase
+    public sealed class WebApplicationTests : Foundatio.Logging.Xunit.TestWithLoggingBase, IClassFixture<WebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
@@ -37,12 +37,12 @@ namespace EchoWebService.IntegrationTests
         public async Task HttpGetReturnsSuccessAndCorrectContentTypeAsync()
         {
             var client = _factory.CreateClient();
-            var requestUri = new Uri("/");
+            var requestUri = new Uri("http://localhost/");
             var response = await client.GetAsync(requestUri);
 
             response.EnsureSuccessStatusCode();
             Assert.Equal(
-                "text/text; charset=utf-8",
+                "text/plain; charset=utf-8",
                 response.Content.Headers.ContentType.ToString());
 
             await LogResponseAsync(response);

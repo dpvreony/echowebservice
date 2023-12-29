@@ -67,7 +67,7 @@ namespace EchoWebService.WebApp
 
             var response = context.Response;
             response.StatusCode = 200;
-            response.ContentType = "text/plain";
+            response.ContentType = "text/plain; charset=utf-8";
 
             var request = context.Request;
             await response.WriteAsync($"{request.Method} : {request.Path}{request.QueryString.Value}\n")
